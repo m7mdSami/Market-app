@@ -1,0 +1,25 @@
+table{
+    width: 100%;
+    margin: 20px 0;
+    img.ProductImg{
+        width: 130px;
+        margin: 10px 0;
+    }
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    > * {
+        width: 100%;
+    }
+}
+.total{
+    display: flex;
+    justify-content: space-between
+}
+.noProduct{
+    text-align: center;
+    margin: 20px 0;
+}

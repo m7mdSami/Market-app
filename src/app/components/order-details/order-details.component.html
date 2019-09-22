@@ -1,0 +1,123 @@
+<mat-card *ngIf="products && user && orderDetails ; else lodaing">
+    <mat-tab-group>
+        <mat-tab label="Order Details">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Order Date :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ orderDetails.OrderDate | date: 'd/M/y'}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Payment Type :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ orderDetails.PaymentType}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Products :</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <table mat-table [dataSource]="products" class="mat-elevation-z8">
+    
+                            <!-- ProductName Column -->
+                            <ng-container matColumnDef="ProductName">
+                                <th mat-header-cell *matHeaderCellDef> Product Name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.ProductName}} </td>
+                            </ng-container>
+    
+                            <!-- ProductPrice Column -->
+                            <ng-container matColumnDef="ProductPrice">
+                                <th mat-header-cell *matHeaderCellDef> Product Price </th>
+                                <td mat-cell *matCellDef="let element"> {{element.ProductPrice}} </td>
+                            </ng-container>
+    
+                            <!-- AvailablePieces Column -->
+                            <ng-container matColumnDef="AvailablePieces">
+                                <th mat-header-cell *matHeaderCellDef> Available Pieces </th>
+                                <td mat-cell *matCellDef="let element"> {{element.AvailablePieces}} </td>
+                            </ng-container>
+    
+                            <!-- ProductImg Column -->
+                            <ng-container matColumnDef="ProductImg">
+                                <th mat-header-cell *matHeaderCellDef> Product Img </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <img class="ProductImg" [src]="element.ProductImg" [alt]="element.ProductName">
+                                </td>
+                            </ng-container>
+    
+                            <!-- Quantity Column -->
+                            <ng-container matColumnDef="Quantity">
+                                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                    {{ orderDetails.Products[i].Quantity }}
+                                </td>
+                            </ng-container>
+    
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Customer Details">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Name :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ user.Name}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Email :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ user.Email}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Phone :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ user.Phone}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Address :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ user.Address}}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>RegisterDate :</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            {{ user.RegisterDate | date: 'd/M/y'}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-card>
+
+
+<ng-template #lodaing>
+    <div class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
