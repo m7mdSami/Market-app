@@ -2,7 +2,7 @@
 An Angular ecommerce app that allows you to:
 
 Process orders from customers and accept Stripe payments for goods and services.
-Manage inventory in your Cosmic JS Dashboard or in the admin area on the website.
+Manage inventory in your Dashboard or in the admin area on the website.
 
 ## Tools and Technologies
 
